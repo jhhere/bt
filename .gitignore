@@ -26,5 +26,5 @@ doc/
 .secret
 
 # Ignore zeus files
-zeus.json
 custom_plan.rb
+zeus.json

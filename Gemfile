@@ -37,8 +37,6 @@ gem 'zurb-foundation'
 
 group :development do
   gem 'sqlite3', '1.3.8'
-  gem 'better_errors'
-  gem 'rails_layout', github: 'RailsApps/rails_layout'
 end
 
 group :development, :test do
