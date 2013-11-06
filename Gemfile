@@ -8,7 +8,7 @@ gem 'rails', '4.0.1'
 gem 'sass-rails', '~> 4.0.1'
 
 # Use Uglifier as compressor for JavaScript assets
-gem "uglifier", "~> 2.3.0"
+gem 'uglifier', "~> 2.3.0"
 
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.1'
@@ -23,7 +23,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem "jbuilder", "~> 1.5.2"
+gem 'jbuilder', "~> 1.5.2"
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -38,6 +38,14 @@ gem 'zurb-foundation'
 group :development do
   gem 'sqlite3', '1.3.8'
   gem 'better_errors'
+end
+
+group :development, :test do
+  gem 'rspec-rails', "~> 2.14.0"
+end
+
+group :test do
+  gem 'capybara', "~> 2.1.0"
 end
 
 group :production do
