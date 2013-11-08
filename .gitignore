@@ -24,3 +24,7 @@ doc/
 .DS_Store
 .idea
 .secret
+
+# Ignore zeus files
+zeus.json
+custom_plan.rb
