@@ -24,6 +24,7 @@ doc/
 .DS_Store
 .idea
 .secret
+bundler_stubs/
 
 # Ignore zeus files
 custom_plan.rb
