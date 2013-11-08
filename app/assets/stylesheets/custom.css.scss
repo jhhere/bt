@@ -1,0 +1,28 @@
+@import "bootstrap";
+
+$mintcream: #F5FFFA;
+
+body {
+  padding: 70px;
+  background-color: $mintcream;
+}
+
+.navbar-default {
+  background-color: #fff;
+}
+
+.nav-pills > li > a {
+  margin-top: 5%;
+  margin-right: 0.5em;
+}
+
+.jumbotron {
+  text-align: center;
+  background-color: white;
+  border: 1px solid #D3D3D3;
+}
+
+.form-control {
+  width: 70%;
+  margin: 0 auto;
+}

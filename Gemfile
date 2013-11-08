@@ -33,7 +33,7 @@ end
 ## Added Gems
 gem 'simple_form'
 gem 'compass-rails', '~> 2.0.alpha.0'
-gem 'zurb-foundation'
+gem "bootstrap-sass", "~> 3.0.0.0"
 
 group :development do
   gem 'sqlite3', '1.3.8'
