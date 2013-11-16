@@ -1,0 +1,15 @@
+<div class="jumbotron">
+  <h2>Find and Connect with others that have similar aspirations!</h2>
+  <p class="lead">Create what you want to get better at below</p>
+
+  <div class="row">
+    <!--<form class="form-inline" role="form">-->
+      <%= form_for(:session, url: sessions_path, html: { class: "form-inline"} ) do |f| %>
+        <%= render 'shared/error_messages' %>
+        <%= f.text_field :goal, class: "form-control input-lg", placeholder: "I want to make 300 recipes in 365 days..." %>
+        <%= f.submit "Set Goal", class: "btn btn-lg btn-success" %>
+      <% end %>
+    <!--</form>-->
+  </div>
+</div>
+
