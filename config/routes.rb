@@ -3,6 +3,7 @@ Bettertogether::Application.routes.draw do
   get "users/new"
   root 'goals#new', via: 'get'
   resources :goals
+  resources :users
 
   match '/signup', to: 'users#new', via: 'get'
 
