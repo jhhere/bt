@@ -10,7 +10,9 @@ describe User do
   it { should respond_to(:password_digest) }
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
+  it { should respond_to(:remember_token) }
   it { should respond_to(:authenticate) }
+  it { should respond_to(:goals) }
 
   it { should be_valid }
 
@@ -91,5 +93,34 @@ describe User do
   describe "with a password that's too short" do
     before { @user.password = @user.password_confirmation = "a" * 5 }
     it { should be_invalid }
+  end
+
+  describe "remember token" do
+    before { @user.save }
+    its(:remember_token) { should_not be_blank }
+  end
+
+  describe "goal associations" do
+
+    before { @user.save }
+    let!(:older_goal) do
+      FactoryGirl.create(:goal, user: @user, created_at: 1.day.ago)
+    end
+    let!(:newer_goal) do
+      FactoryGirl.create(:goal, user: @user, created_at: 1.hour.ago)
+    end
+
+    it "should have the right goal in the right order" do
+      expect(@user.goals.to_a).to eq [older_goal, newer_goal]
+    end
+
+    it "should destroy associated microposts" do
+      goals = @user.goals.to_a
+      @user.destroy
+      expect(goals).not_to be_empty
+      goals.each do |goal|
+        expect(Goal.where(id: goal.id)).to be_empty
+      end
+    end
   end
 end

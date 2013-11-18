@@ -4,35 +4,35 @@ describe "SessionsPages" do
 
   subject { page }
 
-  describe "create goal on homepage" do
-    before { visit root_path }
+  describe "signin page" do
+    before { visit signin_path }
 
-    it { should have_title('Better Together') }
-    it { should have_link('Save Goal') }
-    it { should have_button('Sign in') }
-    it { should have_button('Set Goal') }
+    it { should have_selector('h1', text: 'Sign in') }
+    it { should have_title('Sign in') }
 
     describe "with invalid information" do
-      before { click_button "Set Goal" }
+      before { click_button "Sign in!"}
 
-      it { should have_title('Better Together') }
-      it { should have_selector('div.alert.alert-error', text: 'friggin') }
+      it { should have_title('Sign in') }
+      it { should have_selector('div.alert.alert-error', text: 'Please fill out correct email/password combo.')}
 
-      describe "after visiting another page" do
-        before { click_link "Better Together" }
-        it { should_not have_selector('div.alert.alert-error') }
-      end
     end
 
     describe "with valid information" do
-      let(:goal) { FactoryGirl.create(:goal) }
+      let(:user) { FactoryGirl.create(:user) }
       before do
-        fill_in "session_goal", with: "I want to make 300 recipes in 365 days"
-        click_button "Set Goal"
+        fill_in "Email", with: user.email.upcase
+        fill_in "Password", with: user.password
+        click_button "Sign in!"
       end
 
-      it { should have_title('Goals') }
-      it { should have_selector('h1', 'Your Goals') }
+      it { should have_title('Your Profile') }
+      it { should have_link('Sign out', href: signout_path) }
+
+      describe "followed by signout" do
+        before { click_link 'Sign out' }
+        it { should have_link('Sign in') }
+      end
     end
   end
 end

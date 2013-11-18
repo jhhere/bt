@@ -4,7 +4,7 @@ class GoalsController < ApplicationController
   end
 
   def show
-    @goal = Goal.find(params[:id])
+    @goal = user.goals
   end
 
   def create
@@ -16,6 +16,10 @@ class GoalsController < ApplicationController
       flash.now[:error] = "That's not a friggin' goal!"
       render 'new'
     end
+  end
+
+  def destroy
+
   end
 
   private

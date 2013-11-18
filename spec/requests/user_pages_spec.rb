@@ -39,17 +39,28 @@ describe "User pages" do
 
         let(:user) { User.find_by(email: "example@example.com") }
 
-        it { should have_title("Your Profile") }
+        it { should have_title('Your Profile') }
+        it { should have_link('Sign out') }
         it { should have_content(user.email) }
+        it { should have_selector('div.alert.alert-success', text: 'Woohoo') }
       end
     end
   end
 
   describe "profile page" do
     let(:user) { FactoryGirl.create(:user) }
+    let(:goal_1) { FactoryGirl.create(:goal, user: user, goal: "I want to make 300 recipes in 365 days") }
+    let(:goal_2) { FactoryGirl.create(:goal, user: user, goal: "I want to read a book in a week")}
+
     before { visit user_path(user) }
 
     it { should have_content(user.email) }
     it { should have_title("Your Profile") }
+
+    describe "goals list" do
+      it { should have_content(goal_1.goal) }
+      it { should have_content(goal_2.goal) }
+      it { should have_content(user.goals.count) }
+    end
   end
 end

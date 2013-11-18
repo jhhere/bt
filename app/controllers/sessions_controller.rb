@@ -1,18 +1,24 @@
 class SessionsController < ApplicationController
 
   def new
-    @goal = Goal.new
+
   end
 
   def create
-    @goal = Goal.new(session_params)
-    if @goal.save
-      flash[:success] = "Goal created!"
-      redirect_to @goal
+    user = User.find_by(email: params[:session][:email].downcase)
+    if user && user.authenticate(params[:session][:password])
+      flash[:success] = "Yay"
+      sign_in user
+      redirect_to user
     else
-      flash.now[:error] = "That's not a friggin' goal!"
+      flash.now[:error] = "Please fill out correct email/password combo."
       render 'new'
     end
+  end
+
+  def destroy
+    sign_out
+    redirect_to root_url
   end
 
   private

@@ -1,2 +1,10 @@
 <% provide(:title, "Your Profile") %>
 <%= @user.email %>
+
+<h1>Your Goals</h1>
+
+<% if @user.goals.any? %>
+  <ol>
+    <%= render @goals %>
+  </ol>
+<% end %>
