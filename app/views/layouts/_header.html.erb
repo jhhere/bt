@@ -14,12 +14,12 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="navbar-collapse-1">
         <ul class="nav nav-pills navbar-right">
-          <% if signed_in? %>
+          <% if current_user %>
             <li><%= link_to "Your Profile", current_user %></li>
-            <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
+            <li><%= link_to "Sign out", destroy_user_session_path, method: "delete" %></li>
           <% else %>
             <li><a href="#">Save Goal</a></li>
-            <li><%= link_to "Sign in", signin_path, class: "btn btn-info navbar-btn" %></li>
+            <li><%= link_to "Sign in", new_user_session_path, class: "btn btn-info navbar-btn" %></li>
           <% end %>
         </ul>
       </div><!-- /.navbar-collapse -->

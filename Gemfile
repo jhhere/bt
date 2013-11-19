@@ -36,6 +36,7 @@ gem 'simple_form'
 gem 'compass-rails', '~> 2.0.alpha.0'
 gem "bootstrap-sass", "~> 3.0.0.0"
 gem "faker", "~> 1.2.0"
+gem "devise", "~> 3.2.1"
 
 group :development do
   gem "rack-livereload", "~> 0.3.15"
