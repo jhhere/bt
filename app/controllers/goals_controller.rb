@@ -1,17 +1,14 @@
 class GoalsController < ApplicationController
+
   def new
     @goal = Goal.new
   end
 
-  def show
-    @goal = user.goals
-  end
-
   def create
-    @goal = Goal.new(goal_params)
+    @goal = current_user.goals.build(goal_params)
     if @goal.save
       flash[:success] = "Goal created!"
-      redirect_to @goal
+      redirect_to goal.user
     else
       flash.now[:error] = "That's not a friggin' goal!"
       render 'new'
@@ -19,7 +16,6 @@ class GoalsController < ApplicationController
   end
 
   def destroy
-
   end
 
   private

@@ -49,8 +49,8 @@ describe "User pages" do
 
   describe "profile page" do
     let(:user) { FactoryGirl.create(:user) }
-    let(:goal_1) { FactoryGirl.create(:goal, user: user, goal: "I want to make 300 recipes in 365 days") }
-    let(:goal_2) { FactoryGirl.create(:goal, user: user, goal: "I want to read a book in a week")}
+    let!(:goal_1) { FactoryGirl.create(:goal, user: user, goal: "I want to make 300 recipes in 365 days") }
+    let!(:goal_2) { FactoryGirl.create(:goal, user: user, goal: "I will read a book in a week") }
 
     before { visit user_path(user) }
 

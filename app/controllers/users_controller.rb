@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @goals = @user.goals
   end
 
   def create
@@ -15,6 +16,7 @@ class UsersController < ApplicationController
       flash[:success] = "Woohoo you have an account now!"
       redirect_to @user
     else
+      flash.now[:error] = "That's not a friggin' goal!"
       render 'new'
     end
   end

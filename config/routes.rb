@@ -1,7 +1,7 @@
 Bettertogether::Application.routes.draw do
 
   root 'goals#new', via: 'get'
-  resources :goals
+  resources :goals, only: [:new, :create, :destroy]
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
 
