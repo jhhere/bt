@@ -16,7 +16,6 @@ class UsersController < ApplicationController
       flash[:success] = "Woohoo you have an account now!"
       redirect_to @user
     else
-      flash.now[:error] = "That's not a friggin' goal!"
       render 'new'
     end
   end
@@ -26,5 +25,4 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:email, :password, :password_confirmation)
     end
-
 end

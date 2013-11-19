@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  before_save { self.email = email.downcase }
+  before_save { self.email = email.downcase if self.email }
 
   validates_presence_of :email
   validates_uniqueness_of :email, case_sensitive: false
