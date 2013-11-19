@@ -5,7 +5,9 @@ describe "Goal Pages" do
   subject { page }
 
   describe "homepage to create goal" do
-    before { visit root_path }
+    before do
+      visit root_path
+    end
 
     it { should have_title('Better Together') }
     it { should have_link('Save Goal') }

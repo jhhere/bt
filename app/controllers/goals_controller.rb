@@ -5,10 +5,10 @@ class GoalsController < ApplicationController
   end
 
   def create
-    @goal = current_user.goals.build(goal_params)
+    @goal = current_user.goals.create(goal_params)
     if @goal.save
       flash[:success] = "Goal created!"
-      redirect_to goal.user
+      redirect_to current_user
     else
       flash.now[:error] = "That's not a friggin' goal!"
       render 'new'
