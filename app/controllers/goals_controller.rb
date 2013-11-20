@@ -5,18 +5,9 @@ class GoalsController < ApplicationController
   end
 
   def create
-    #@goal = anonymous_user.goals.create(goal_params) if !signed_in?
-    if user_signed_in?
-      @goal = current_user.goals.create(goal_params)
-      @goal.save
-      flash[:success] = "Goal created!"
-      redirect_to current_user
-    elsif !user_signed_in?
-      @user = User.new
-      @user.save
-      sign_in @user
-      @goal = current_user.goals.create(goal_params)
-      @goal.save
+    User.create unless user_signed_in?
+    @goal = current_user.goals.create(goal_params)
+    if @goal.save
       flash[:success] = "Goal created!"
       redirect_to current_user
     else
