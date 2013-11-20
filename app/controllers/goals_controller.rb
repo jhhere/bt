@@ -7,7 +7,7 @@ class GoalsController < ApplicationController
   def create
     sign_in(User.create(guest: true)) unless user_signed_in?
 
-    @goal = current_user.goals.create(goal_params)
+    @goal = current_user.goals.new(goal_params)
     if @goal.save
       flash[:success] = "Goal created!"
       redirect_to current_user
