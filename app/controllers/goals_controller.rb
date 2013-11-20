@@ -5,7 +5,7 @@ class GoalsController < ApplicationController
   end
 
   def create
-    User.create unless user_signed_in?
+    sign_in(User.create) unless user_signed_in?
     @goal = current_user.goals.create(goal_params)
     if @goal.save
       flash[:success] = "Goal created!"

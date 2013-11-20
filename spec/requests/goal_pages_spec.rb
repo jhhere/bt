@@ -10,7 +10,7 @@ describe "Goal Pages" do
     end
 
     it { should have_title('Better Together') }
-    it { should have_link('Save Goal') }
+    it { should have_button('Save Goal') }
     it { should have_button('Sign in') }
     it { should have_button('Set Goal') }
 
@@ -22,7 +22,7 @@ describe "Goal Pages" do
         expect { click_button submit }.not_to change(Goal, :count)
       end
 
-      before { click_button "Set Goal" }
+      before { click_button('Set Goal') }
 
       it { should have_title('Better Together') }
       it { should have_selector('div.alert.alert-error', text: 'friggin') }
@@ -43,15 +43,5 @@ describe "Goal Pages" do
         expect { click_button submit }.to change(Goal, :count).by(1)
       end
     end
-  end
-
-  describe "goal list page" do
-
-    let(:goal) { FactoryGirl.create(:goal) }
-
-    before { visit goal_path(goal) }
-
-    it { should have_selector('h1', 'Your Goals') }
-    it { should have_title('Goals') }
   end
 end
