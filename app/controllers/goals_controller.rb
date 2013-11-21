@@ -19,9 +19,10 @@ class GoalsController < ApplicationController
   def destroy
   end
 
-  private
+private
 
-    def goal_params
-      params.require(:goal).permit(:goal)
-    end
+  def goal_params
+    params.require(:goal).permit(:goal)
+  end
+
 end
