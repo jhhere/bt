@@ -10,8 +10,8 @@ describe "Goal Pages" do
     end
 
     it { should have_title('Better Together') }
-    it { should have_button('Save Goal') }
-    it { should have_button('Sign in') }
+    it { should have_link('Save Goal') }
+    it { should have_link('Sign in') }
     it { should have_button('Set Goal') }
 
     let(:submit) { "Set Goal" }
