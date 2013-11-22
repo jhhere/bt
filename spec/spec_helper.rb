@@ -43,6 +43,17 @@ RSpec.configure do |config|
   # Capybara-Webskit
   Capybara.javascript_driver = :webkit
 
-  # Capybarar
+  # Capybara
   config.include Capybara::DSL
+
+  # Database Cleaner
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :truncation
+  end
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
 end

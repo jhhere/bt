@@ -40,6 +40,15 @@ describe "sign up" do
     page.should have_link('Your Profile')
     page.should have_link('Sign out')
     page.should_not have_link('Sign in')
+
+    click_link 'Sign out'
+    click_link 'Sign in'
+
+    fill_in "Email", with: "example@example.com"
+    fill_in "user_password", with: "password"
+
+    click_button 'Sign in'
+    page.should have_selector('.alert-notice', text: 'Signed in successfully.')
   end
 end
 
@@ -78,8 +87,7 @@ describe "goal creation" do
       page.should_not have_link('Sign in')
 
       visit user_path(user)
-      page.should have_content('Your Goals')
-      #page.should have_content(user.email)
+      page.should have_content('Your Profile')
       page.should have_content(goal_1.goal)
       page.should have_content(goal_2.goal)
     end
