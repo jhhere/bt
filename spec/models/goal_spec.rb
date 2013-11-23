@@ -3,7 +3,11 @@ require 'spec_helper'
 describe Goal do
 
   let(:user) { FactoryGirl.create(:user) }
-  before { @goal = user.goals.build(goal: "I want to make 300 recipes in 365 days") }
+  before { @goal = user.goals.new(goal: "I want to make 300 recipes in 365 days") }
+
+  it "has a valid factory" do
+    user.should be_valid
+  end
 
   subject { @goal }
 
