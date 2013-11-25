@@ -186,6 +186,10 @@ Devise.setup do |config|
   # change their passwords.
   config.reset_password_within = 6.hours
 
+  # Google Omniauth2
+  require "omniauth-google-oauth2"
+  config.omniauth :google_oauth2, ENV["APP_ID"], ENV["APP_SECRET"], { access_type: "offline", approval_prompt: "" }
+
   # ==> Configuration for :encryptable
   # Allow you to use another encryption algorithm besides bcrypt (default). You can use
   # :sha1, :sha512 or encryptors from others authentication tools as :clearance_sha1,

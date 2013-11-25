@@ -36,6 +36,7 @@ gem 'simple_form'
 gem 'compass-rails', '~> 2.0.alpha.0'
 gem "bootstrap-sass", "~> 3.0.0.0"
 gem "devise", "~> 3.2.1"
+gem 'omniauth-google-oauth2'
 
 group :development do
   gem "rack-livereload", "~> 0.3.15"
@@ -48,6 +49,7 @@ group :development, :test do
   gem 'capybara', "~> 2.1.0"
   gem "capybara-webkit", "~> 1.0.0"
   gem "factory_girl_rails", "~> 4.3.0"
+  gem "dotenv-rails", "~> 0.9.0"
 end
 
 group :test do

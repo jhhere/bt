@@ -35,34 +35,34 @@ describe User do
   end
 
   describe '#password_required?' do
-    context "for non-guest users" do
-      it { should be_true }
+    it "is true for non-guest users" do
+      expect(@user.password_required?).to be_true
     end
 
-    context "for saved non-guest users" do
-      before { @user.save }
-      it { should be_false }
+    it "is false for saved non-guest users" do
+      @user.save
+      expect(@user.password_required?).to be_true
     end
 
-    context "for guest users" do
-      before { @user = User.new(guest: true) }
-      it { should be_false }
+    it "is false for guest users" do
+      @user.guest = true
+      expect(@user.password_required?).to be_false
     end
   end
 
-  describe '#email_required' do
-    context "for non-guest users" do
-      it { should be_true }
+  describe '#email_required?' do
+    it "is true for non-guest users" do
+      expect(@user.email_required?).to be_true
     end
 
-    context "for saved non-guest users" do
-      before { @user.save }
-      it { should be_true }
+    it "is true for saved non-guest users" do
+      @user.save
+      expect(@user.email_required?).to be_true
     end
 
-    context "for guest users" do
-      before { @user = User.new(guest: true) }
-      it { should be_false }
+    it "is false for guest users" do
+      @user.guest = true
+      expect(@user.email_required?).to be_false
     end
   end
 

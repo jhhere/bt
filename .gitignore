@@ -26,6 +26,10 @@ doc/
 .secret
 bundler_stubs/
 
+# Dotenv
+.env.development
+.env.test
+
 # Ignore zeus files
 custom_plan.rb
 zeus.json
