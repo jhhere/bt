@@ -190,6 +190,10 @@ Devise.setup do |config|
   require "omniauth-google-oauth2"
   config.omniauth :google_oauth2, ENV["APP_ID"], ENV["APP_SECRET"], { access_type: "offline", approval_prompt: "" }
 
+  # Facebook Omniauth
+    require "omniauth-facebook"
+    config.omniauth :facebook, "APP_ID", "APP_SECRET"
+
   # ==> Configuration for :encryptable
   # Allow you to use another encryption algorithm besides bcrypt (default). You can use
   # :sha1, :sha512 or encryptors from others authentication tools as :clearance_sha1,
