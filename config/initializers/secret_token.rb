@@ -9,4 +9,8 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Bettertogether::Application.config.secret_key_base = '2db1e0b88fe1f457af9122246520daa4360149755fc77728d2bcffc9b2496c508108d89dd33907d2576d59425f90a3ed13a8123b32c7e3fed317f252c0a31f4f'
+Bettertogether::Application.config.secret_key_base = if Rails.env.development? or Rails.env.test?
+  ('x' * 30) # meets minimum requirement of 30 chars long
+else
+  ENV['SECRET_TOKEN']
+end
