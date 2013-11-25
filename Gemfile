@@ -46,6 +46,7 @@ group :development, :test do
   gem "guard-livereload", "~> 2.0.0"
   gem 'capybara', "~> 2.1.0"
   gem "capybara-webkit", "~> 1.0.0"
+  gem "dotenv-rails", "~> 0.9.0"
 end
 
 group :test do
