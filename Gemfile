@@ -37,6 +37,8 @@ gem 'compass-rails', '~> 2.0.alpha.0'
 gem "bootstrap-sass", "~> 3.0.0.0"
 gem "devise", "~> 3.2.1"
 gem 'omniauth-google-oauth2'
+gem "omniauth", "~> 1.1.4"
+gem 'omniauth-facebook'
 
 group :development do
   gem "rack-livereload", "~> 0.3.15"
@@ -55,7 +57,6 @@ end
 group :test do
   gem "database_cleaner", "~> 1.2.0"
   gem "faker", "~> 1.2.0"
-  gem "launchy", "~> 2.4.0"
 end
 
 group :production do
