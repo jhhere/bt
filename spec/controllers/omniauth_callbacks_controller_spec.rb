@@ -49,4 +49,27 @@ describe Users::OmniauthCallbacksController do
       response.should redirect_to root_path
     end
   end
+
+  describe "Twitter" do
+    before do
+      request.env["devise.mapping"] = Devise.mappings[:user]
+
+      OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new({
+        :provider => 'twitter',
+        :uid => '1337',
+        :info => {
+          :email => 'test@some_twitter_domain.com',
+          :name => 'Test Twitter User'
+        }
+      })
+
+      request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:twitter]
+    end
+
+    it "signs user in and redirect to homepage" do
+      get :twitter
+      flash[:notice].should match /#{I18n.t "devise.omniauth_callbacks.success", :kind => "Twitter"}/
+      response.should redirect_to root_path
+    end
+  end
 end

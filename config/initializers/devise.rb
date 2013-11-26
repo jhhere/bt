@@ -194,6 +194,10 @@ Devise.setup do |config|
     require "omniauth-facebook"
     config.omniauth :facebook, ENV["FACEBOOK_ID"], ENV["FACEBOOK_SECRET"]
 
+  # Twitter Omniauth
+  require 'omniauth-twitter'
+  config.omniauth :twitter , ENV["TWITTER_ID"], ENV["TWITTER_SECRET"]
+
   # ==> Configuration for :encryptable
   # Allow you to use another encryption algorithm besides bcrypt (default). You can use
   # :sha1, :sha512 or encryptors from others authentication tools as :clearance_sha1,
