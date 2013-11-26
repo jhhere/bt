@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe "Sign in with Google" do
+describe "Sign in with Facebook" do
 
   before do
     visit root_path
 
-    OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new({
-      :provider => 'google_oauth2',
+    OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new({
+      :provider => 'facebook',
       :uid => '1337',
       :info => {
         :email => 'test@some_test_domain.com',
@@ -16,9 +16,9 @@ describe "Sign in with Google" do
   end
 
   it "when user clicks login" do
-    click_link 'Sign in with Google'
+    click_link 'Sign in with Facebook'
 
-    page.should have_content('from Google account.')
+    page.should have_content('from Facebook account.')
     page.should have_link('Sign out')
   end
 end
