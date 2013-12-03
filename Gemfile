@@ -51,6 +51,7 @@ group :development, :test do
   gem "factory_girl_rails", "~> 4.3.0"
   gem "dotenv-rails", "~> 0.9.0"
   gem "sqlite3", "~> 1.3.8"
+  gem "devise_invitable", "~> 1.3.1"
 end
 
 group :test do
