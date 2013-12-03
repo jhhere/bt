@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.1'
-gem 'pg', '0.15.1'
+
 
 ## Rails Defaults
 # Use SCSS for stylesheets
@@ -50,6 +50,7 @@ group :development, :test do
   gem "capybara-webkit", "~> 1.0.0"
   gem "factory_girl_rails", "~> 4.3.0"
   gem "dotenv-rails", "~> 0.9.0"
+  gem "sqlite3", "~> 1.3.8"
 end
 
 group :test do
@@ -60,6 +61,7 @@ end
 
 group :production do
   gem 'rails_12factor', '0.0.2'
+  gem 'pg', '0.15.1'
 end
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.1.2'
