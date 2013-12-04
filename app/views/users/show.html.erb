@@ -1,0 +1,8 @@
+<% provide(:title, "Your Profile") %>
+
+<%= current_user.email %>
+
+<% if current_user.goals.any? %>
+  <h1>Your Goals (<%= current_user.goals.count %>)</h1>
+    <%= render @goals %>
+<% end %>
