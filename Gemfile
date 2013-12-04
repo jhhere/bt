@@ -35,6 +35,10 @@ end
 gem 'simple_form'
 gem 'compass-rails', '~> 2.0.alpha.0'
 gem "bootstrap-sass", "~> 3.0.0.0"
+gem "devise", "~> 3.2.1"
+gem 'omniauth-google-oauth2'
+gem 'omniauth-facebook'
+gem "omniauth-twitter", "~> 1.0.1"
 
 group :development do
   gem "rack-livereload", "~> 0.3.15"
@@ -46,19 +50,20 @@ group :development, :test do
   gem "guard-livereload", "~> 2.0.0"
   gem 'capybara', "~> 2.1.0"
   gem "capybara-webkit", "~> 1.0.0"
+  gem "factory_girl_rails", "~> 4.3.0"
   gem "dotenv-rails", "~> 0.9.0"
 end
 
 group :test do
-  gem "factory_girl_rails", "~> 4.3.0"
   gem "database_cleaner", "~> 1.2.0"
+  gem "faker", "~> 1.2.0"
 end
 
 group :production do
   gem 'rails_12factor', '0.0.2'
 end
 # Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.1.2'
+gem 'bcrypt-ruby', '~> 3.1.2'
 
 # Use unicorn as the app server
 # gem 'unicorn'
