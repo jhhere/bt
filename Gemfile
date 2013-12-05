@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.1'
-
+gem 'pg', '0.15.1'
 
 ## Rails Defaults
 # Use SCSS for stylesheets
@@ -37,6 +37,7 @@ gem 'compass-rails', '~> 2.0.alpha.0'
 gem "bootstrap-sass", "~> 3.0.0.0"
 gem "devise", "~> 3.2.1"
 gem 'omniauth-google-oauth2'
+gem "devise_invitable", "~> 1.3.1"
 
 group :development do
   gem "rack-livereload", "~> 0.3.15"
@@ -50,19 +51,16 @@ group :development, :test do
   gem "capybara-webkit", "~> 1.0.0"
   gem "factory_girl_rails", "~> 4.3.0"
   gem "dotenv-rails", "~> 0.9.0"
-  gem "sqlite3", "~> 1.3.8"
-  gem "devise_invitable", "~> 1.3.1"
+  gem "action_mailer_cache_delivery", "~> 0.3.7"
 end
 
 group :test do
   gem "database_cleaner", "~> 1.2.0"
   gem "faker", "~> 1.2.0"
-  gem "launchy", "~> 2.4.0"
 end
 
 group :production do
   gem 'rails_12factor', '0.0.2'
-  gem 'pg', '0.15.1'
 end
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.1.2'
