@@ -59,4 +59,7 @@ RSpec.configure do |config|
 
   # OmniAuth
   OmniAuth.config.test_mode = true
+
+  # Assert Difference
+  config.include AssertDifference
 end
