@@ -10,7 +10,9 @@ describe Users::InvitationsController do
 
   describe 'create action' do
     it "sends an invite email" do
-      expect{ post :create, :email => "friend_email@example.com" }.to change(ActionMailer::Base.deliveries, :size)
+      expect {
+        post :create, :user => { :email => "friend_email@example.com" }
+      }.to change(ActionMailer::Base.deliveries, :size)
     end
   end
 
