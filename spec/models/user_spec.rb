@@ -126,15 +126,4 @@ describe User do
     end
   end
 
-=begin
-  describe "email" do
-    it "invalid format" do
-      addresses = %w[user@foo,com user_at_foo.org example.user@foo. foo@bar_baz.com foo@bar+baz.com]
-      addresses.each do |invalid_address|
-        @user.email = invalid_address
-        expect(@user).not_to be_valid
-      end
-    end
-  end
-=end
 end
