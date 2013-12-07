@@ -53,6 +53,8 @@ group :development, :test do
   gem "dotenv-rails", "~> 0.9.0"
   gem "action_mailer_cache_delivery", "~> 0.3.7"
   gem "assert_difference", "~> 0.5.0"
+  gem "pry-byebug"
+  gem "pry-rails"
 end
 
 group :test do
