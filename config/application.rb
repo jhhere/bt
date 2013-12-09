@@ -21,5 +21,7 @@ module Bettertogether
     # config.i18n.default_locale = :de
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
 
+
+    config.colorize_logging = false
   end
 end
