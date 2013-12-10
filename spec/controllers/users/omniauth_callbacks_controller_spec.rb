@@ -35,7 +35,11 @@ describe Users::OmniauthCallbacksController do
         :uid => '1337',
         :info => {
           :email => 'test@some_twitter_domain.com',
-          :name => 'Test Twitter User'
+        },
+        :extra => {
+          :raw_info => {
+            :name => 'Test Facebook User'
+          }
         }
       })
 

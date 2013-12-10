@@ -10,7 +10,11 @@ describe "Sign in with Facebook" do
       :uid => '1337',
       :info => {
         :email => 'test@some_test_domain.com',
-        :name=>'Test User'
+      },
+      :extra => {
+        :raw_info => {
+          :name => 'Test User'
+        }
       }
     })
   end
