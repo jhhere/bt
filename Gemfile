@@ -51,7 +51,6 @@ group :development, :test do
   gem "capybara-webkit", "~> 1.0.0"
   gem "factory_girl_rails", "~> 4.3.0"
   gem "dotenv-rails", "~> 0.9.0"
-  gem "action_mailer_cache_delivery", "~> 0.3.7"
   gem "pry-byebug"
   gem "pry-rails"
 end
