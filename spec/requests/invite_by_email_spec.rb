@@ -30,12 +30,6 @@ describe "email invitation" do
       click_button invitation_submit
       page.should have_selector('.alert-notice', text: 'An invitation email has been sent to friend_email@example.com')
     end
-
-    it "fails with no email" do
-      fill_in "Email", with: ""
-      click_button invitation_submit
-      page.should have_content("Email can't be blank")
-    end
   end
 
 end

@@ -14,6 +14,12 @@ describe Users::InvitationsController do
         post :create, :user => { :email => "friend_email@example.com" }
       }.to change(ActionMailer::Base.deliveries, :size)
     end
+
+    it "fails sending of a blank invite email" do
+      expect {
+        post :create, :user => { :email => "" }
+      }.not_to change(ActionMailer::Base.deliveries, :size)
+    end
   end
 
 end
