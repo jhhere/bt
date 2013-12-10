@@ -8,6 +8,7 @@ development:
   encoding: unicode
   database: bt_development
   pool: 5
+  timeout: 5000
   host: localhost
   username: joyce
   password:
@@ -20,6 +21,7 @@ test:
   encoding: unicode
   database: bt_test
   pool: 5
+  timeout: 5000
   host: localhost
   username: joyce
   password:

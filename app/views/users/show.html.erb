@@ -2,6 +2,10 @@
 
 <%= current_user.email %>
 
+<p>
+<%= link_to "Invite Your Friend", new_user_invitation_path %>
+</p>
+
 <% if current_user.goals.any? %>
   <h1>Your Goals (<%= current_user.goals.count %>)</h1>
     <%= render @goals %>

@@ -198,6 +198,12 @@ Devise.setup do |config|
   require 'omniauth-twitter'
   config.omniauth :twitter , ENV["TWITTER_ID"], ENV["TWITTER_SECRET"]
 
+  # ==> Configuration for :invitable
+  # The period the generated invitation token is valid, after
+  # this period, the invited resource won't be able to accept the invitation.
+  # When invite_for is 0 (the default), the invitation won't expire.
+  # config.invite_for = 2.weeks
+
   # ==> Configuration for :encryptable
   # Allow you to use another encryption algorithm besides bcrypt (default). You can use
   # :sha1, :sha512 or encryptors from others authentication tools as :clearance_sha1,
