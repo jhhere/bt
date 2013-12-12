@@ -33,3 +33,5 @@ bundler_stubs/
 # Ignore zeus files
 custom_plan.rb
 zeus.json
+
+.tags*
