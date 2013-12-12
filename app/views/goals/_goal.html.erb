@@ -1,3 +1,7 @@
+<% if goal == @current_goal %>
+<ol class="current_goal">
+<% else %>
 <ol>
+<% end %>
   <%= goal.goal %>
 </ol>
