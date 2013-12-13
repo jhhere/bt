@@ -16,6 +16,6 @@
 <% if current_user.goals.any? %>
   <h1>Your Goals (<%= current_user.goals.count %>)</h1>
   <div id="user_goals">
-    <%= render @user.goals %>
+    <%= render current_user.goals %>
   </div>
 <% end %>
