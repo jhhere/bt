@@ -3,5 +3,5 @@
 <% else %>
 <ol>
 <% end %>
-  <%= goal.goal %>
+  <%= goal.goal %> <%= link_to "(remove)", goal, method: :delete, data: { confirm: "Are you sure?" } %>
 </ol>

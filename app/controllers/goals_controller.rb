@@ -20,6 +20,8 @@ class GoalsController < ApplicationController
   end
 
   def destroy
+    @goal = Goal.destroy(params[:id])
+    redirect_to current_user
   end
 
 private
