@@ -1,3 +1,5 @@
+$('#new_goal')[0].reset();
+
 $('#user_goals').html("<%= escape_javascript render(current_user.goals) %>");
 
 $('.current_goal').css({'background-color': '#FFFFDD'}).animate({'background-color':'#87CEFA'}, 1000);

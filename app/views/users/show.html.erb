@@ -6,11 +6,10 @@
 <%= link_to "Invite Your Friend", new_user_invitation_path %>
 </p>
 
-
 <%= form_for(@goal, remote: true, html: { class: "form-inline"} ) do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-  <%= f.text_field :goal, class: "form-control input-lg", placeholder: "I want to make 300 recipes in 365 days..." %>
-  <%= f.submit "Set Goal", class: "btn btn-lg btn-success" %>
+<%= render 'shared/error_messages', object: f.object %>
+<%= f.text_field :goal, class: "form-control input-lg", placeholder: "I want to make 300 recipes in 365 days..." %>
+<%= f.submit "Set Goal", class: "btn btn-lg btn-success" %>
 <% end %>
 
 <% if current_user.goals.any? %>
