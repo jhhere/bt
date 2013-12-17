@@ -1,8 +1,8 @@
 <% if goal == @current_goal %>
-<ol class="current_goal">
+<ol class="current goal_<%= goal.id %>">
   <div class="bg_fade"></div>
 <% else %>
-<ol>
+<ol class="goal_<%= goal.id %>">
 <% end %>
-  <%= goal.goal %> <%= link_to "(remove)", goal, method: :delete, data: { confirm: "Are you sure?" } %>
+  <%= goal.goal %> <%= link_to "(remove)", goal, method: :delete, remote: true %>
 </ol>

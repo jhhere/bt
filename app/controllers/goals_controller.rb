@@ -23,6 +23,7 @@ class GoalsController < ApplicationController
     @goal = Goal.destroy(params[:id])
       respond_to do |format|
         format.html { redirect_to current_user }
+        format.js { @current_goal = @goal }
       end
   end
 
