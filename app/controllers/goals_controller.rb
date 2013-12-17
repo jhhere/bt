@@ -10,7 +10,7 @@ class GoalsController < ApplicationController
 
     respond_to do |format|
       if @goal.save
-        format.html { redirect_to current_user }
+        format.html { redirect_to current_user, :flash => { success: 'Your goal has been added!'} }
         format.js { @current_goal = @goal }
       else
         flash.now[:error] = "That's not a friggin' goal!"
@@ -21,7 +21,12 @@ class GoalsController < ApplicationController
 
   def destroy
     @goal = Goal.destroy(params[:id])
-    redirect_to current_user
+      respond_to do |format|
+        format.html { redirect_to current_user }
+      end
+  end
+
+  def index
   end
 
 private

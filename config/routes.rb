@@ -8,6 +8,7 @@ Bettertogether::Application.routes.draw do
     get 'signup' => 'devise/registrations#new'
     delete 'signout' => 'devise/sessions#destroy'
   end
+
   root 'goals#new', via: 'get'
   resources :goals, only: [:new, :create, :destroy]
   resources :users, only: [:show]

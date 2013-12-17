@@ -54,8 +54,8 @@ group :development, :test do
   gem "capybara-webkit", "~> 1.0.0"
   gem "factory_girl_rails", "~> 4.3.0"
   gem "dotenv-rails", "~> 0.9.0"
-  gem "pry-byebug"
   gem "pry-rails"
+  gem "pry-byebug"
 end
 
 group :test do
