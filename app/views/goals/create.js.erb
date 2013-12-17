@@ -1,6 +1,6 @@
 $('#user_goals').html("<%= escape_javascript render(current_user.goals) %>");
 
-$('.current_goal').css({'background-color': '#FFFFDD'}).animate({'background-color':'#87CEFA'}, 1000);
+$('.bg_fade').show().delay(500).fadeOut(1100);
 
 $('.goal_count').html("Your Goals (<%= current_user.goals.count %>)");
 

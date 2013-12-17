@@ -1,3 +1,18 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.current_goal {
+  position: relative;
+  z-index: 1;
+}
+
+.bg_fade {
+  height: 100%;
+  width: 100%;
+  background-color: #87CEFA;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
