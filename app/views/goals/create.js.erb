@@ -2,7 +2,11 @@ $('#user_goals').html("<%= escape_javascript render(current_user.goals) %>");
 
 $('.bg_fade').show().delay(500).fadeOut(1100);
 
-$('#flash_message').append('<div class="alert alert-success">Your goal has been created!</div>');
+$('<div class="alert alert-success">Your goal has been created!</div>').appendTo("#flashes");
+
+setTimeout(function() {
+  $('div.alert.alert-success').fadeOut();
+}, 1100);
 
 $('div.alert.alert-success').fadeOut(1100);
 
