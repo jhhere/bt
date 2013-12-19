@@ -10,8 +10,13 @@ class GoalsController < ApplicationController
 
     respond_to do |format|
       if @goal.save
-        format.html { redirect_to current_user, :flash => { success: 'Your goal has been added!'} }
-        format.js { @current_goal = @goal }
+        flash[:success] = "Your goal has been added!"
+        format.html {
+          redirect_to current_user
+        }
+        format.js {
+          @current_goal = @goal
+        }
       else
         flash.now[:error] = "That's not a friggin' goal!"
         format.html { render action: 'new' }

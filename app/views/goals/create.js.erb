@@ -2,6 +2,10 @@ $('#user_goals').html("<%= escape_javascript render(current_user.goals) %>");
 
 $('.bg_fade').show().delay(500).fadeOut(1100);
 
+$('#flash_message').append('<div class="alert alert-success">Your goal has been created!</div>');
+
+$('div.alert.alert-success').fadeOut(1100);
+
 $('.goal_count').html("Your Goals (<%= current_user.goals.count %>)");
 
 $('#new_goal')[0].reset();
