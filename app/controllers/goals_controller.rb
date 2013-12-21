@@ -10,16 +10,16 @@ class GoalsController < ApplicationController
 
     respond_to do |format|
       if @goal.save
-        flash[:success] = "Your goal has been added!"
         format.html {
+          flash[:success] = "Your goal has been added!"
           redirect_to current_user
         }
         format.js {
           @current_goal = @goal
         }
       else
-        flash.now[:error] = "That's not a friggin' goal!"
         format.html { render action: 'new' }
+        format.js { render 'create.js.erb' }
       end
     end
   end
