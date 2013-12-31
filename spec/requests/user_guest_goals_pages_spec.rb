@@ -15,7 +15,6 @@ describe "homepage" do
     expect { click_button submit_goal }.not_to change(Goal, :count)
 
     page.should have_title('Better Together')
-    page.should have_content("That's not a friggin' goal")
     page.should have_selector('#error_explanation', text: 'The form contains 1 error')
     page.should_not have_title('Your Profile')
 
@@ -30,7 +29,7 @@ describe "homepage" do
 
     it "succeeds with valid information" do
       expect { click_button submit_goal }.to change(Goal, :count).by(1)
-      page.should have_selector('.alert-success', text: 'Goal created!')
+      page.should have_selector('.alert-success', text: 'Your goal has been added!')
       page.should have_title('Your Profile')
       page.should have_link('Sign out')
       page.should have_content('Your Goals')
