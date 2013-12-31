@@ -16,7 +16,7 @@
   <div class="container">
       <div id="flashes">
         <% flash.each do |key, message| %>
-          <%= content_tag(:div, message, class: "alert alert-#{key}") %>
+          <%= content_tag(:div, message, class: "alert alert-#{key} alert-dismissable") %>
         <% end %>
       </div>
       <%= yield %>
