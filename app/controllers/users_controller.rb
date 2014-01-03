@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @goals = @user.goals
+    @goals = @user.goals.order("position")
     @goal = @user.goals.build
   end
 
