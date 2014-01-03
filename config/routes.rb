@@ -10,7 +10,10 @@ Bettertogether::Application.routes.draw do
   end
 
   root 'goals#new', via: 'get'
-  resources :goals, only: [:new, :create, :destroy]
+  resources :goals, only: [:new, :create, :destroy, :sort] do
+    collection { post :sort }
+  end
+
   resources :users, only: [:show]
 
   # The priority is based upon order of creation: first created -> highest priority.

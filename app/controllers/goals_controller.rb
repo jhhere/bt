@@ -33,6 +33,11 @@ class GoalsController < ApplicationController
   end
 
   def index
+    @goals = Goal.order("position")
+  end
+
+  def sort
+    render nothing: true
   end
 
 private
