@@ -14,7 +14,7 @@
 
 <% if current_user.goals.any? %>
   <h1 class="goal_count">Your Goals (<%= current_user.goals.count %>)</h1>
-  <ol id="user_goals">
+  <ol id="user_goals" data-update-url="<%= sort_goals_url %>">
     <%= render current_user.goals %>
   </ol>
 <% end %>

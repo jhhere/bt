@@ -37,6 +37,9 @@ class GoalsController < ApplicationController
   end
 
   def sort
+    params[:goal].each_with_index do |id, index|
+      Goal.where(id: id).update_all( {position: index+1} )
+    end
     render nothing: true
   end
 
