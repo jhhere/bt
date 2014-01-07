@@ -1,8 +1,9 @@
 <% if goal == @current_goal %>
-  <div class="current">
+  <li id="goal_<%= goal.id %>" class="current">
   <div class="bg_fade"></div>
+<% else %>
+  <li id="goal_<%= goal.id %>">
 <% end %>
-<li id="goal_<%= goal.id %>">
   <button type="button" class="btn btn-default btn-xs">
     <span class="glyphicon glyphicon-arrow-up"></span>
   </button>
@@ -11,3 +12,4 @@
   </button>
   <%= goal.goal %> <%= link_to "(remove)", goal, method: :delete, remote: true %>
 </li>
+
