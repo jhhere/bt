@@ -1,16 +1,13 @@
 <% if goal == @current_goal %>
-<ol class="current goal_<%= goal.id %>">
+  <div class="current">
   <div class="bg_fade"></div>
-<% else %>
-<ol class="goal_<%= goal.id %>">
 <% end %>
-    <div class="vote-button">
-      <button type="button" class="btn btn-default btn-xs">
-        <span class="glyphicon glyphicon-arrow-up"></span>
-      </button>
-      <button type="button" class="btn btn-default btn-xs">
-        <span class="glyphicon glyphicon-arrow-down"></span>
-      </button>
-    </div>
-      <div class="goal-text"><%= goal.goal %> <%= link_to "(remove)", goal, method: :delete, remote: true %></div>
-</ol>
+<li id="goal_<%= goal.id %>">
+  <button type="button" class="btn btn-default btn-xs">
+    <span class="glyphicon glyphicon-arrow-up"></span>
+  </button>
+    <button type="button" class="btn btn-default btn-xs">
+    <span class="glyphicon glyphicon-arrow-down"></span>
+  </button>
+  <%= goal.goal %> <%= link_to "(remove)", goal, method: :delete, remote: true %>
+</li>
