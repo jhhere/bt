@@ -1,9 +1,3 @@
-<script>
-  $('li.goal button').on('click', function(e) {
-    $(e.target).parents('li.goal').find('.name').append('working?');
-  });
-</script>
-
 <%= content_tag_for :li, goal, class: (goal == @current_goal ? "current" : nil) do %>
   <button type="button" class="btn btn-default btn-xs">
     <span class="glyphicon glyphicon-arrow-up"></span>

@@ -19,4 +19,11 @@
   </ol>
 <% end %>
 
+<script>
+  $('li.goal button').on('click', function(e) {
+    $(e.target).parents('li.goal').find('.name').append('working?');
+  });
+</script>
+
+
 <%= debug current_user.goals %>
