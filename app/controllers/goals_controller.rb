@@ -26,10 +26,10 @@ class GoalsController < ApplicationController
 
   def destroy
     @goal = Goal.destroy(params[:id])
-      respond_to do |format|
-        format.html { redirect_to current_user }
-        format.js { @current_goal = @goal }
-      end
+    respond_to do |format|
+      format.html { redirect_to current_user }
+      format.js { @current_goal = @goal }
+    end
   end
 
   def index
@@ -38,7 +38,7 @@ class GoalsController < ApplicationController
 
   def sort
     params[:goal].each_with_index do |id, index|
-      Goal.where(id: id).update_all( {position: index+1} )
+      Goal.where(id: id).update_all(position: index + 1)
     end
     render nothing: true
   end

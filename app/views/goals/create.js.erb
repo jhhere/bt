@@ -14,8 +14,8 @@ $('#flashes > #error_explanation').empty();
 <% end %>
 
 setTimeout(function() {
-  $('div.alert.alert-success').fadeOut();
-}, 1100);
+  $('div.alert-success').delay(1100).fadeOut();
+});
 
 $('.goal_count').html("Your Goals (<%= current_user.goals.count %>)");
 

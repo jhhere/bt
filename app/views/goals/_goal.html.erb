@@ -1,15 +1,16 @@
-<% if goal == @current_goal %>
-  <li id="goal_<%= goal.id %>" class="current">
-  <div class="bg_fade"></div>
-<% else %>
-  <li id="goal_<%= goal.id %>">
-<% end %>
+<script>
+  $('li.goal button').on('click', function(e) {
+    $(e.target).parents('li.goal').find('.name').append('working?');
+  });
+</script>
+
+<%= content_tag_for :li, goal, class: (goal == @current_goal ? "current" : nil) do %>
   <button type="button" class="btn btn-default btn-xs">
     <span class="glyphicon glyphicon-arrow-up"></span>
   </button>
     <button type="button" class="btn btn-default btn-xs">
     <span class="glyphicon glyphicon-arrow-down"></span>
   </button>
-  <span class="text"><%= goal.goal %></span> <%= link_to "(remove)", goal, method: :delete, remote: true %>
+  <span class="name"><%= goal.goal %></span> <%= link_to "(remove)", goal, method: :delete, remote: true %>
 </li>
-
+<% end %>
