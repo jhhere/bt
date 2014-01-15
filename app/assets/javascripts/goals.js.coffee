@@ -7,3 +7,6 @@ jQuery ->
     axis: 'y'
     update: ->
       $.post($(this).data('update-url'), $(this).sortable('serialize'))
+
+  $('#user_goals').on 'click', 'li.goal button', (e) ->
+    $(e.target).parents('li.goal').find('.name').append('working?')
