@@ -40,8 +40,10 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 
-  # Capybara-Webskit
+  # Capybara-Webkit
+  require 'capybara/webkit/matchers'
   Capybara.javascript_driver = :webkit
+  config.include(Capybara::Webkit::RspecMatchers, :type => :feature)
 
   # Capybara
   config.include Capybara::DSL
