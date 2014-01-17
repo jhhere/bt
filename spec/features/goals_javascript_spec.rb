@@ -30,6 +30,9 @@ let(:set_goal) { "Set Goal" }
     page.find("li.goal:first-child button.down").click
     expect("I will drink water").to appear_before("I want to sleep")
 
+    page.find("li.goal:last-child button.up").click
+    expect("I want to sleep").to appear_before("I will drink water")
+
   end
 
 end
