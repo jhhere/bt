@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :invitable, :omniauthable, :omniauth_providers => [:google_oauth2, :facebook, :twitter]
 
   has_many :goals, dependent: :destroy
+  has_many :blogs, dependent: :destroy
 
   attr_accessor :guest
 
