@@ -17,7 +17,18 @@ let(:set_goal) { "Set Goal" }
       click_button set_goal
     end
 
+    within("#new_goal") do
+      fill_in "goal_goal", with: "I will drink water"
+      click_button set_goal
+    end
+
     expect(page).to have_content("I want to sleep")
+    expect(page).to have_content("I will drink water")
+    expect("I want to sleep").to appear_before("I will drink water")
+
+    visit current_url
+    page.find("li.goal:first-child button.down").click
+    expect("I will drink water").to appear_before("I want to sleep")
 
   end
 
