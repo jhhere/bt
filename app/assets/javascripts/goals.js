@@ -9,7 +9,7 @@ jQuery(function() {
     }
   });
 
-  $('#user_goals').on('click', 'li.goal button', function(e) {
+  $('body > .container').on('click', 'li.goal button', function(e) {
 
     button = $(e.target);
 
