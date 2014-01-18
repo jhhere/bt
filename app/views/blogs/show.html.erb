@@ -2,17 +2,22 @@
 
 <p>
   <strong>Title:</strong>
-  <%= @blog.title %>
+  <p><%= @blog.title %></p>
 </p>
 
 <p>
   <strong>Body:</strong>
-  <%= @blog.body %>
+  <p><%= @blog.body %></p>
 </p>
 
 <p>
   <strong>Topics:</strong>
-  <%= @blog.topics %>
+  <p><%= @blog.topics %></p>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <p><%= @blog.published_at %></p>
 </p>
 
 <%= link_to 'Edit', edit_user_blog_path(@user, @blog) %> |

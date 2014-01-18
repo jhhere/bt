@@ -23,25 +23,27 @@ describe BlogsController do
   # This should return the minimal set of attributes required to create a valid
   # Blog. As you add validations to Blog, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "title" => "MyString" } }
+  let(:valid_attributes) { { "title" => "MyString", "published_at" => Time.now } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # BlogsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
+  let(:user) { FactoryGirl.create(:user) }
+
   describe "GET index" do
     it "assigns all blogs as @blogs" do
-      blog = Blog.create! valid_attributes
-      get :index, {}, valid_session
+      blog = user.blogs.create! valid_attributes
+      get :index, {user_id: user.id}, valid_session
       assigns(:blogs).should eq([blog])
     end
   end
 
   describe "GET show" do
     it "assigns the requested blog as @blog" do
-      blog = Blog.create! valid_attributes
-      get :show, {:id => blog.to_param}, valid_session
+      blog = user.blogs.create! valid_attributes
+      get :show, {:id => blog.to_param, :user_id => user.id }, valid_session
       assigns(:blog).should eq(blog)
     end
   end
@@ -144,16 +146,16 @@ describe BlogsController do
 
   describe "DELETE destroy" do
     it "destroys the requested blog" do
-      blog = Blog.create! valid_attributes
+      blog = user.blogs.create! valid_attributes
       expect {
-        delete :destroy, {:id => blog.to_param}, valid_session
+        delete :destroy, {:id => blog.to_param, :user_id => user.id }, valid_session
       }.to change(Blog, :count).by(-1)
     end
 
     it "redirects to the blogs list" do
       blog = Blog.create! valid_attributes
-      delete :destroy, {:id => blog.to_param}, valid_session
-      response.should redirect_to(blogs_url)
+      delete :destroy, {:id => blog.to_param, :user_id => user.id }, valid_session
+      response.should redirect_to(user_blogs_url)
     end
   end
 
