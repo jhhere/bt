@@ -145,6 +145,10 @@ describe BlogsController do
   end
 
   describe "DELETE destroy" do
+    before do
+      sign_in user
+    end
+
     it "destroys the requested blog" do
       blog = user.blogs.create! valid_attributes
       expect {
