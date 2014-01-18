@@ -130,8 +130,8 @@ describe BlogsController do
         blog = user.blogs.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         user.blogs.any_instance.stub(:save).and_return(false)
-        put :update, {:id => blog.to_param, :blog => { "title" => "invalid value", :user_id => user.id }}, valid_session
-        assigns(:blog).should eq(user_blog_url(user))
+        put :update, {:id => blog.to_param, :blog => { "title" => "invalid value"}, :user_id => user.id}, valid_session
+        assigns(:blog).should eq(blog)
       end
 
       it "re-renders the 'edit' template" do
