@@ -79,7 +79,7 @@ describe BlogsController do
 
       it "redirects to the created blog" do
         post :create, {:blog => valid_attributes, :user_id => user.id }, valid_session
-        response.should redirect_to(user.blogs.last)
+        response.should redirect_to(user_blog_url(user, user.blogs.last))
       end
     end
 
