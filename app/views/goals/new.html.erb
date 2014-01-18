@@ -3,13 +3,9 @@
   <p class="lead">Create what you want to get better at below</p>
 
   <div class="row">
-    <!--<form class="form-inline" role="form">-->
-      <%= form_for(@goal, html: { class: "form-inline"} ) do |f| %>
-        <%= render 'shared/error_messages', object: f.object %>
-        <%= f.text_field :goal, class: "form-control input-lg", placeholder: "I want to make 300 recipes in 365 days..." %>
-        <%= f.submit "Set Goal", class: "btn btn-lg btn-success" %>
-      <% end %>
-    <!--</form>-->
+
+    <%= render 'shared/goals_form' %>
+
   </div>
 </div>
 

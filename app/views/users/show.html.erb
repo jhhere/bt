@@ -6,7 +6,17 @@
 <%= link_to "Invite Your Friend", new_user_invitation_path %>
 </p>
 
-<% if current_user.goals.any? %>
-  <h1>Your Goals (<%= current_user.goals.count %>)</h1>
-    <%= render @goals %>
+<%= form_for(@goal, remote: true, html: { class: "form-inline"} ) do |f| %>
+<%= render 'shared/error_messages', object: f.object %>
+<%= f.text_field :goal, class: "form-control input-lg", placeholder: "I want to make 300 recipes in 365 days..." %>
+<%= f.submit "Set Goal", class: "btn btn-lg btn-success" %>
 <% end %>
+
+<% if current_user.goals.any? %>
+  <h1 class="goal_count">Your Goals (<%= current_user.goals.count %>)</h1>
+  <ol id="user_goals" data-update-url="<%= sort_goals_url %>">
+    <%= render current_user.goals %>
+  </ol>
+<% end %>
+
+<%= debug current_user.goals %>

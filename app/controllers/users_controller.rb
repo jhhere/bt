@@ -7,7 +7,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @goals = @user.goals
+    @goals = @user.goals.order("position")
+    @goal = @user.goals.build
   end
 
   def create
@@ -24,6 +25,6 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation, :provider, :uid)
+      params.require(:user).permit(:email, :password, :password_confirmation, :provider, :uid, :name)
     end
 end

@@ -1,0 +1,22 @@
+<% if @goal.errors.any? %>
+  $('#flashes').html("<%= escape_javascript render("shared/error_messages", object: @goal) %>")
+
+<% else %>
+
+$('#user_goals').html("<%= escape_javascript render(current_user.goals) %>");
+
+$('.bg_fade').show().delay(500).fadeOut(1100);
+
+$('<div class="alert alert-success">Your goal has been created!</div>').appendTo("#flashes");
+
+$('#flashes > #error_explanation').empty();
+
+<% end %>
+
+setTimeout(function() {
+  $('div.alert-success').delay(1100).fadeOut();
+});
+
+$('.goal_count').html("Your Goals (<%= current_user.goals.count %>)");
+
+$('#new_goal')[0].reset();

@@ -3,13 +3,17 @@ Bettertogether::Application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :invitations => 'users/invitations' }
 
   as :user do
-    get 'signin' => 'devise/sessions#new'
+    get 'login' => 'devise/sessions#new'
     post 'signin' => 'devise/sessions#create'
     get 'signup' => 'devise/registrations#new'
     delete 'signout' => 'devise/sessions#destroy'
   end
+
   root 'goals#new', via: 'get'
-  resources :goals, only: [:new, :create, :destroy]
+  resources :goals, only: [:new, :create, :destroy, :sort] do
+    collection { post :sort }
+  end
+
   resources :users, only: [:show]
 
   # The priority is based upon order of creation: first created -> highest priority.

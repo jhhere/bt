@@ -7,16 +7,40 @@ class GoalsController < ApplicationController
   def create
     sign_in(User.create(guest: true)) unless user_signed_in?
     @goal = current_user.goals.new(goal_params)
-    if @goal.save
-      flash[:success] = "Goal created!"
-      redirect_to current_user
-    else
-      flash.now[:error] = "That's not a friggin' goal!"
-      render 'new'
+
+    respond_to do |format|
+      if @goal.save
+        format.html {
+          flash[:success] = "Your goal has been added!"
+          redirect_to current_user
+        }
+        format.js {
+          @current_goal = @goal
+        }
+      else
+        format.html { render action: 'new' }
+        format.js { render 'create.js.erb' }
+      end
     end
   end
 
   def destroy
+    @goal = Goal.destroy(params[:id])
+    respond_to do |format|
+      format.html { redirect_to current_user }
+      format.js { @current_goal = @goal }
+    end
+  end
+
+  def index
+    @goals = Goal.order("position")
+  end
+
+  def sort
+    params[:goal].each_with_index do |id, index|
+      Goal.where(id: id).update_all(position: index + 1)
+    end
+    render nothing: true
   end
 
 private

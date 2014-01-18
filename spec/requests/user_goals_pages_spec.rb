@@ -65,7 +65,6 @@ describe "goal creation" do
     expect { click_button submit_goal }.not_to change(Goal, :count)
 
     page.should have_title('Better Together')
-    page.should have_content("That's not a friggin' goal")
     page.should have_selector('#error_explanation', text: 'The form contains 1 error')
     page.should_not have_title('Your Profile')
 

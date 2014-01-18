@@ -12,6 +12,14 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
+# Rspec Custom Matcher
+
+RSpec::Matchers.define :appear_before do |later_content|
+  match do |earlier_content|
+    page.body.index(earlier_content) < page.body.index(later_content)
+  end
+end
+
 RSpec.configure do |config|
   # ## Mock Framework
   #
@@ -27,7 +35,7 @@ RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.use_transactional_fixtures = true
+  config.use_transactional_fixtures = false
 
   # If true, the base class of anonymous controllers will be inferred
   # automatically. This will be the default behavior in future versions of
@@ -40,17 +48,17 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 
-  # Capybara-Webskit
+  # Capybara-Webkit
+  require 'capybara/webkit/matchers'
   Capybara.javascript_driver = :webkit
+  config.include(Capybara::Webkit::RspecMatchers, :type => :feature)
 
   # Capybara
   config.include Capybara::DSL
 
   # Database Cleaner
-  config.before(:suite) do
-    DatabaseCleaner.strategy = :truncation
-  end
   config.before(:each) do
+    DatabaseCleaner.strategy = example.metadata[:js] ? :truncation : :transaction
     DatabaseCleaner.start
   end
   config.after(:each) do

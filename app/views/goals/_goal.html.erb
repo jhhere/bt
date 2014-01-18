@@ -1,3 +1,10 @@
-<ol>
-  <%= goal.goal %>
-</ol>
+<%= content_tag_for :li, goal, class: (goal == @current_goal ? "current" : nil) do %>
+  <button type="button" class="btn btn-default btn-xs up">
+    <span class="glyphicon glyphicon-arrow-up"></span>
+  </button>
+    <button type="button" class="btn btn-default btn-xs down">
+    <span class="glyphicon glyphicon-arrow-down"></span>
+  </button>
+  <span class="name"><%= goal.goal %></span> <%= link_to "(remove)", goal, method: :delete, remote: true %>
+</li>
+<% end %>
