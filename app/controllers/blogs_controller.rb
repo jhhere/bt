@@ -38,7 +38,7 @@ class BlogsController < ApplicationController
   # POST /blogs
   # POST /blogs.json
   def create
-    @blog = current_user.blogs.new(blog_params)
+    @blog = @user.blogs.new(blog_params)
     if params[:commit] == "Save as Draft"
       @blog.published_at = nil
     else

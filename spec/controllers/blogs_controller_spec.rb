@@ -23,7 +23,7 @@ describe BlogsController do
   # This should return the minimal set of attributes required to create a valid
   # Blog. As you add validations to Blog, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "title" => "MyString", "published_at" => Time.now } }
+  let(:valid_attributes) { { "title" => "MyBlogPostTitle", "published_at" => Time.now } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -50,15 +50,15 @@ describe BlogsController do
 
   describe "GET new" do
     it "assigns a new blog as @blog" do
-      get :new, {}, valid_session
+      get :new, { :user_id => user.id }, valid_session
       assigns(:blog).should be_a_new(Blog)
     end
   end
 
   describe "GET edit" do
     it "assigns the requested blog as @blog" do
-      blog = Blog.create! valid_attributes
-      get :edit, {:id => blog.to_param}, valid_session
+      blog = user.blogs.create! valid_attributes
+      get :edit, {:id => blog.to_param, :user_id => user.id }, valid_session
       assigns(:blog).should eq(blog)
     end
   end
@@ -67,19 +67,19 @@ describe BlogsController do
     describe "with valid params" do
       it "creates a new Blog" do
         expect {
-          post :create, {:blog => valid_attributes}, valid_session
+          post :create, {:blog => valid_attributes, :user_id => user.id }, valid_session
         }.to change(Blog, :count).by(1)
       end
 
       it "assigns a newly created blog as @blog" do
-        post :create, {:blog => valid_attributes}, valid_session
+        post :create, {:blog => valid_attributes, :user_id => user.id }, valid_session
         assigns(:blog).should be_a(Blog)
         assigns(:blog).should be_persisted
       end
 
       it "redirects to the created blog" do
-        post :create, {:blog => valid_attributes}, valid_session
-        response.should redirect_to(Blog.last)
+        post :create, {:blog => valid_attributes, :user_id => user.id }, valid_session
+        response.should redirect_to(user.blogs.last)
       end
     end
 
@@ -87,14 +87,14 @@ describe BlogsController do
       it "assigns a newly created but unsaved blog as @blog" do
         # Trigger the behavior that occurs when invalid params are submitted
         Blog.any_instance.stub(:save).and_return(false)
-        post :create, {:blog => { "title" => "invalid value" }}, valid_session
+        post :create, {:blog => { "title" => "invalid value" }, :user_id => user.id }, valid_session
         assigns(:blog).should be_a_new(Blog)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
-        Blog.any_instance.stub(:save).and_return(false)
-        post :create, {:blog => { "title" => "invalid value" }}, valid_session
+        user.blogs.any_instance.stub(:save).and_return(false)
+        post :create, {:blog => { "title" => "invalid value" }, :user_id => user.id }, valid_session
         response.should render_template("new")
       end
     end
@@ -103,42 +103,42 @@ describe BlogsController do
   describe "PUT update" do
     describe "with valid params" do
       it "updates the requested blog" do
-        blog = Blog.create! valid_attributes
+        blog = user.blogs.create! valid_attributes
         # Assuming there are no other blogs in the database, this
         # specifies that the Blog created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Blog.any_instance.should_receive(:update).with({ "title" => "MyString" })
-        put :update, {:id => blog.to_param, :blog => { "title" => "MyString" }}, valid_session
+        user.blogs.any_instance.should_receive(:update).with({ "title" => "MyBlogPostTitle" })
+        put :update, {:id => blog.to_param, :blog => { "title" => "MyBlogPostTitle" }, :user_id => user.id }, valid_session
       end
 
       it "assigns the requested blog as @blog" do
-        blog = Blog.create! valid_attributes
-        put :update, {:id => blog.to_param, :blog => valid_attributes}, valid_session
+        blog = user.blogs.create! valid_attributes
+        put :update, {:id => blog.to_param, :blog => valid_attributes, :user_id => user.id }, valid_session
         assigns(:blog).should eq(blog)
       end
 
       it "redirects to the blog" do
-        blog = Blog.create! valid_attributes
-        put :update, {:id => blog.to_param, :blog => valid_attributes}, valid_session
-        response.should redirect_to(blog)
+        blog = user.blogs.create! valid_attributes
+        put :update, {:id => blog.to_param, :blog => valid_attributes, :user_id => user.id }, valid_session
+        response.should redirect_to(user_blog_url)
       end
     end
 
     describe "with invalid params" do
       it "assigns the blog as @blog" do
-        blog = Blog.create! valid_attributes
+        blog = user.blogs.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
-        Blog.any_instance.stub(:save).and_return(false)
-        put :update, {:id => blog.to_param, :blog => { "title" => "invalid value" }}, valid_session
-        assigns(:blog).should eq(blog)
+        user.blogs.any_instance.stub(:save).and_return(false)
+        put :update, {:id => blog.to_param, :blog => { "title" => "invalid value", :user_id => user.id }}, valid_session
+        assigns(:blog).should eq(user_blog_url(user))
       end
 
       it "re-renders the 'edit' template" do
-        blog = Blog.create! valid_attributes
+        blog = user.blogs.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
-        Blog.any_instance.stub(:save).and_return(false)
-        put :update, {:id => blog.to_param, :blog => { "title" => "invalid value" }}, valid_session
+        user.blogs.any_instance.stub(:save).and_return(false)
+        put :update, {:id => blog.to_param, :blog => { "title" => "invalid value" }, :user_id => user.id }, valid_session
         response.should render_template("edit")
       end
     end
@@ -153,7 +153,7 @@ describe BlogsController do
     end
 
     it "redirects to the blogs list" do
-      blog = Blog.create! valid_attributes
+      blog = user.blogs.create! valid_attributes
       delete :destroy, {:id => blog.to_param, :user_id => user.id }, valid_session
       response.should redirect_to(user_blogs_url)
     end
