@@ -79,7 +79,7 @@ describe BlogsController do
 
       it "redirects to the created blog" do
         post :create, {:blog => valid_attributes, :user_id => user.id }, valid_session
-        response.should redirect_to(user.blogs.last)
+        response.should redirect_to(user_blog_url(user, user.blogs.last))
       end
     end
 
@@ -130,8 +130,8 @@ describe BlogsController do
         blog = user.blogs.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         user.blogs.any_instance.stub(:save).and_return(false)
-        put :update, {:id => blog.to_param, :blog => { "title" => "invalid value", :user_id => user.id }}, valid_session
-        assigns(:blog).should eq(user_blog_url(user))
+        put :update, {:id => blog.to_param, :blog => { "title" => "invalid value"}, :user_id => user.id}, valid_session
+        assigns(:blog).should eq(blog)
       end
 
       it "re-renders the 'edit' template" do
@@ -145,6 +145,10 @@ describe BlogsController do
   end
 
   describe "DELETE destroy" do
+    before do
+      sign_in user
+    end
+
     it "destroys the requested blog" do
       blog = user.blogs.create! valid_attributes
       expect {
